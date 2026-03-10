@@ -3,137 +3,1019 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ram Tyagi | Data Analyst & Ads Consultant</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <title>Ramkumar Tyagi | Analytics Portfolio</title>
+  <meta name="description" content="Production-ready analytics portfolio for Ramkumar Tyagi, Data Analytics and Power BI Developer." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg: #08131f;
+      --bg-soft: #0d1b2f;
+      --bg-soft-2: #12233d;
+      --panel: rgba(12, 22, 40, 0.94);
+      --panel-2: rgba(16, 28, 48, 0.98);
+      --line: rgba(255,255,255,0.09);
+      --text: #eff6ff;
+      --muted: #a8bbda;
+      --blue: #4f8cff;
+      --cyan: #16c7e8;
+      --violet: #7c5cff;
+      --pink: #e4499a;
+      --green: #23c98b;
+      --yellow: #f1b63f;
+      --orange: #ff8a3d;
+      --shadow: 0 24px 70px rgba(0,0,0,0.32);
+      --radius-xl: 32px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --max: 1280px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #f7f7f7;
-      color: #333;
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 8% 0%, rgba(79,140,255,0.16), transparent 22%),
+        radial-gradient(circle at 92% 4%, rgba(228,73,154,0.12), transparent 20%),
+        radial-gradient(circle at 50% 100%, rgba(22,199,232,0.08), transparent 24%),
+        linear-gradient(180deg, #0a1422 0%, #0d1b30 55%, #0b1626 100%);
+      overflow-x: hidden;
     }
-    header {
-      background: #0f172a;
-      color: #fff;
-      padding: 2rem;
-      text-align: center;
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+      background-size: 32px 32px;
+      opacity: .45;
+      mask-image: radial-gradient(circle at center, black 42%, transparent 92%);
+      pointer-events: none;
+      z-index: 0;
     }
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .container { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; position: relative; z-index: 1; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(18px);
+      background: rgba(7, 14, 24, 0.78);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
-    header p {
-      font-size: 1.2rem;
-      margin-top: 0.5rem;
+
+    .nav {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
     }
-    .logo {
-      font-size: 2rem;
-      font-weight: 600;
-      color: #60a5fa;
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
     }
-    section {
-      padding: 3rem 2rem;
-      max-width: 900px;
-      margin: auto;
+
+    .brand-mark {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(79,140,255,0.26), rgba(22,199,232,0.2), rgba(228,73,154,0.16));
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.14), 0 12px 30px rgba(0,0,0,0.2);
     }
-    .section-title {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-      color: #0f172a;
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: var(--muted);
+      font-size: 0.95rem;
     }
-    .project, .testimonial, .blog-post {
-      background: #fff;
-      padding: 1rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      margin-bottom: 1.5rem;
+
+    .nav-links a:hover { color: white; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border-radius: 14px;
+      padding: 14px 22px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: transform .28s ease, box-shadow .28s ease, background .28s ease;
     }
-    .project h3, .testimonial h3, .blog-post h3 {
-      margin-top: 0;
-    }
-    .contact {
-      text-align: center;
-      background: #0f172a;
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--blue), var(--violet));
       color: white;
-      padding: 2rem;
+      box-shadow: 0 16px 34px rgba(79,140,255,0.22);
     }
-    .contact a {
-      color: #60a5fa;
-      text-decoration: none;
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.05);
+      color: white;
+      border-color: var(--line);
     }
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 1.8rem;
-      }
-      header p {
-        font-size: 1rem;
-      }
-      .section-title {
-        font-size: 1.4rem;
-      }
+
+    .hero {
+      min-height: auto;
+      display: flex;
+      align-items: stretch;
+      padding: 0;
+    }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1.02fr 0.98fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.05);
+      color: #dce9ff;
+      font-size: 0.84rem;
+      margin-bottom: 18px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--cyan), var(--blue));
+      box-shadow: 0 0 16px rgba(22,199,232,0.55);
+    }
+
+    .headline {
+      font-size: clamp(2.8rem, 1.5rem + 3.6vw, 5.8rem);
+      line-height: 0.93;
+      letter-spacing: -0.08em;
+      margin: 0 0 18px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #fff 0%, #a8d0ff 32%, #74e7f7 58%, #c6b5ff 78%, #ffb1d7 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-copy p {
+      margin: 0;
+      max-width: 720px;
+      color: var(--muted);
+      line-height: 1.9;
+      font-size: 1.04rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .impact-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .card, .metric-card, .dashboard-shell, .detail-card, .timeline-card, .project-card, .accordion-item, .contact-card, .skill-pill, .mini-panel, .chart-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .metric-card {
+      border-radius: 20px;
+      padding: 18px;
+      position: relative;
+      overflow: hidden;
+      min-height: 118px;
+    }
+
+    .metric-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -30px -40px auto;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,255,255,0.08), transparent 70%);
+      pointer-events: none;
+    }
+
+    .metric-card strong {
+      display: block;
+      font-size: 1.7rem;
+      margin-bottom: 6px;
+    }
+
+    .metric-card span {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+
+    .dashboard-shell {
+      border-radius: var(--radius-xl);
+      padding: 18px;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      min-height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dashboard-shell::before {
+      content: "";
+      position: absolute;
+      inset: -30% auto auto -18%;
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, rgba(79,140,255,0.15), transparent 60%);
+      pointer-events: none;
+    }
+
+    .dashboard-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .dashboard-head h3 { margin: 0; font-size: 1.02rem; }
+
+    .status-pill {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(35,201,139,0.12);
+      color: #c8ffe8;
+      border: 1px solid rgba(35,201,139,0.18);
+      font-size: 0.76rem;
+      font-weight: 700;
+    }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 14px;
+      min-height: 0;
+      align-items: stretch;
+    }
+
+    .chart-card, .mini-panel {
+      border-radius: 22px;
+      padding: 18px;
+      background: rgba(255,255,255,0.045);
+      box-shadow: none;
+      overflow: hidden;
+    }
+
+    .chart-card small, .mini-panel small {
+      color: var(--muted);
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .bars {
+      height: 220px;
+      display: flex;
+      align-items: end;
+      gap: 12px;
+      margin-top: 14px;
+      padding-bottom: 34px;
+      overflow: hidden;
+    }
+
+    .bar {
+      flex: 1;
+      min-width: 0;
+      border-radius: 16px 16px 4px 4px;
+      position: relative;
+      background: linear-gradient(180deg, rgba(22,199,232,0.95), rgba(79,140,255,0.52));
+      box-shadow: 0 12px 20px rgba(22,199,232,0.12);
+    }
+
+    .bar:nth-child(2){ background: linear-gradient(180deg, rgba(79,140,255,0.95), rgba(124,92,255,0.52)); }
+    .bar:nth-child(3){ background: linear-gradient(180deg, rgba(35,201,139,0.95), rgba(22,199,232,0.45)); }
+    .bar:nth-child(4){ background: linear-gradient(180deg, rgba(241,182,63,0.95), rgba(255,138,61,0.45)); }
+    .bar:nth-child(5){ background: linear-gradient(180deg, rgba(228,73,154,0.95), rgba(124,92,255,0.45)); }
+
+    .bar::after {
+      content: attr(data-label);
+      position: absolute;
+      left: 50%;
+      bottom: -28px;
+      transform: translateX(-50%);
+      color: var(--muted);
+      font-size: 0.74rem;
+      white-space: nowrap;
+    }
+
+    .kpi-grid {
+      display: grid;
+      gap: 12px;
+      min-height: 100%;
+    }
+
+    .mini-panel strong {
+      display: block;
+      font-size: 1.35rem;
+      margin-bottom: 6px;
+    }
+
+    .progress {
+      height: 9px;
+      width: 100%;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    .progress span {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--cyan), var(--blue), var(--violet));
+    }
+
+    .dashboard-footer {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .section {
+      padding: 88px 0;
+      position: relative;
+    }
+
+    .section-title {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 1.2rem + 2vw, 3.6rem);
+      letter-spacing: -0.06em;
+      line-height: 1.02;
+    }
+
+    .section-subtitle {
+      max-width: 760px;
+      margin: 0 0 34px;
+      color: var(--muted);
+      line-height: 1.9;
+      font-size: 1.02rem;
+    }
+
+    .grid-2, .projects-grid, .contact-grid {
+      display: grid;
+      gap: 22px;
+    }
+
+    .grid-2 { grid-template-columns: 1.05fr 0.95fr; }
+    .projects-grid { grid-template-columns: repeat(2, 1fr); }
+    .contact-grid { grid-template-columns: 1.05fr 0.95fr; }
+
+    .detail-card {
+      border-radius: 28px;
+      padding: 28px;
+      overflow: hidden;
+    }
+
+    .detail-card p, .timeline-card p, .project-card p, .accordion-body, .contact-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.85;
+    }
+
+    .skill-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .skill-pill {
+      padding: 13px 18px;
+      border-radius: 999px;
+      box-shadow: none;
+      font-size: 0.93rem;
+      color: white;
+    }
+
+    .skill-bars {
+      margin-top: 24px;
+      display: grid;
+      gap: 15px;
+    }
+
+    .skill-row strong {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 8px;
+      font-size: 0.94rem;
+    }
+
+    .timeline-wrap {
+      display: grid;
+      gap: 18px;
+    }
+
+    .timeline-card, .project-card, .accordion-item, .contact-card {
+      border-radius: 26px;
+      padding: 26px;
+      position: relative;
+      overflow: hidden;
+      transition: transform .28s ease, border-color .28s ease, background .28s ease;
+    }
+
+    .timeline-card:hover, .project-card:hover, .accordion-item:hover, .contact-card:hover { transform: translateY(-4px); }
+
+    .timeline-card::before, .project-card::before, .accordion-item::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), transparent 35%);
+      pointer-events: none;
+    }
+
+    .meta {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .tag {
+      display: inline-flex;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #dbeafe;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+
+    .timeline-card ul, .project-card ul {
+      margin: 16px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .foot {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      margin-top: 18px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      color: #d8e7ff;
+      font-size: 0.9rem;
+    }
+
+    .filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .chip-btn {
+      border: 1px solid rgba(255,255,255,0.08);
+      color: white;
+      border-radius: 16px;
+      padding: 12px 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: .25s ease;
+      text-align: left;
+      min-height: 52px;
+      box-shadow: none;
+    }
+
+    .chip-btn:hover { transform: translateY(-2px); }
+
+    .filter-row .chip-btn:nth-child(1) { background: linear-gradient(135deg, rgba(79,140,255,0.22), rgba(79,140,255,0.08)); }
+    .filter-row .chip-btn:nth-child(2) { background: linear-gradient(135deg, rgba(35,201,139,0.22), rgba(35,201,139,0.08)); }
+    .filter-row .chip-btn:nth-child(3) { background: linear-gradient(135deg, rgba(241,182,63,0.22), rgba(241,182,63,0.08)); }
+    .filter-row .chip-btn:nth-child(4) { background: linear-gradient(135deg, rgba(228,73,154,0.22), rgba(228,73,154,0.08)); }
+
+    .filter-row .chip-btn.active {
+      border-color: rgba(255,255,255,0.16);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+    }
+
+    .accordion-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .accordion-head {
+      width: 100%;
+      background: transparent;
+      color: white;
+      border: 0;
+      padding: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .accordion-left small { color: var(--muted); display: block; margin-bottom: 6px; }
+    .accordion-left h3 { margin: 0; font-size: 1.12rem; }
+
+    .accordion-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      flex-shrink: 0;
+      transition: transform .28s ease;
+    }
+
+    .accordion-item.open .accordion-icon { transform: rotate(45deg); }
+
+    .accordion-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .32s ease;
+      padding-right: 8px;
+    }
+
+    .accordion-inner {
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      margin-top: 16px;
+    }
+
+    .contact-wrap {
+      border-radius: 32px;
+      padding: 34px;
+      background:
+        radial-gradient(circle at top left, rgba(22,199,232,0.14), transparent 24%),
+        radial-gradient(circle at bottom right, rgba(228,73,154,0.12), transparent 26%),
+        rgba(9, 17, 31, 0.98);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: white;
+    }
+
+    .icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(79,140,255,0.18), rgba(228,73,154,0.16));
+      border: 1px solid rgba(255,255,255,0.08);
+      flex-shrink: 0;
+    }
+
+    .muted { color: var(--muted); }
+    .hidden { display: none !important; }
+
+    footer {
+      text-align: center;
+      color: #91a6c8;
+      font-size: 0.92rem;
+      padding: 26px 0 42px;
+    }
+
+    .divider {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    }
+
+    .bookmark-list .bookmark-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 56px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+      color: white;
+      position: relative;
+      overflow: hidden;
+      font-weight: 700;
+    }
+
+    .bookmark-list .bookmark-btn::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(255,255,255,0.12), transparent 60%);
+      opacity: .45;
+      pointer-events: none;
+    }
+
+    .bookmark-list .bookmark-btn:nth-child(1) { background: linear-gradient(135deg, rgba(79,140,255,0.95), rgba(79,140,255,0.65)); }
+    .bookmark-list .bookmark-btn:nth-child(2) { background: linear-gradient(135deg, rgba(22,199,232,0.95), rgba(22,199,232,0.65)); }
+    .bookmark-list .bookmark-btn:nth-child(3) { background: linear-gradient(135deg, rgba(124,92,255,0.95), rgba(124,92,255,0.65)); }
+    .bookmark-list .bookmark-btn:nth-child(4) { background: linear-gradient(135deg, rgba(35,201,139,0.95), rgba(35,201,139,0.65)); }
+    .bookmark-list .bookmark-btn:nth-child(5) { background: linear-gradient(135deg, rgba(241,182,63,0.95), rgba(255,138,61,0.72)); }
+    .bookmark-list .bookmark-btn:nth-child(6) { background: linear-gradient(135deg, rgba(228,73,154,0.95), rgba(228,73,154,0.66)); }
+
+    .bookmark-list .bookmark-btn.active {
+      transform: translateX(6px);
+      box-shadow: 0 16px 30px rgba(0,0,0,0.22);
+      border-color: rgba(255,255,255,0.22);
+    }
+
+    .dashboard-view {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    @media (max-width: 1100px) {
+      .hero { min-height: auto; }
+      .hero-layout, .dashboard-grid, .grid-2, .projects-grid, .contact-grid { grid-template-columns: 1fr; }
+      .impact-row, .dashboard-footer { grid-template-columns: repeat(2, 1fr); }
+      .nav-links { display: none; }
+      .app-shell { grid-template-columns: 1fr !important; }
+    }
+
+    @media (max-width: 640px) {
+      .section { padding: 72px 0; }
+      .impact-row, .dashboard-footer { grid-template-columns: 1fr; }
+      .hero-actions { flex-direction: column; }
+      .dashboard-shell, .detail-card, .timeline-card, .project-card, .accordion-item, .contact-wrap, .contact-card { padding: 20px; }
+      .bars { height: 170px; gap: 10px; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="logo">RT</div>
-    <h1>Ram Tyagi</h1>
-    <p>Data Analyst turned Ads Consultant | Power BI • SQL • Python • Google Ads</p>
-  </header>
-
-  <section>
-    <h2 class="section-title">About Me</h2>
-    <p>I am a data analyst with over 3 years of experience in SQL, Power BI, and Python. I'm now helping businesses grow with data-driven ads and smart reporting dashboards. I combine campaign expertise with analytics to maximize ROI for my clients.</p>
-  </section>
-
-  <section>
-    <h2 class="section-title">Skills</h2>
-    <ul>
-      <li>Power BI, Power Query</li>
-      <li>SQL (MySQL, PostgreSQL)</li>
-      <li>Python (Pandas, Automation)</li>
-      <li>Google Ads, Meta Ads</li>
-      <li>Reporting Dashboards & ETL</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2 class="section-title">Projects</h2>
-    <div class="project">
-      <h3>Power BI Ads Dashboard</h3>
-      <p>A campaign performance dashboard showing impressions, clicks, CTR, and conversions. Built using Power BI and integrated with Google Ads API.</p>
+  <div class="topbar">
+    <div class="container nav">
+      <a href="#" class="brand" onclick="showView('overview'); return false;">
+        <span class="brand-mark">RT</span>
+        <span>Ramkumar Tyagi</span>
+      </a>
+      <div class="nav-links">
+        <a href="#" onclick="showView('overview'); return false;">Overview</a>
+        <a href="#" onclick="showView('experience'); return false;">Experience</a>
+        <a href="#" onclick="showView('projects'); return false;">Projects</a>
+        <a href="#" onclick="showView('deepdive'); return false;">Deep Dive</a>
+        <a href="#" onclick="showView('contact'); return false;">Contact</a>
+      </div>
+      <a href="mailto:ram.tyagi1208@gmail.com" class="btn btn-secondary">Connect</a>
     </div>
-    <div class="project">
-      <h3>Python Ad Data Automation</h3>
-      <p>Script to fetch, clean, and store Facebook Ads insights into PostgreSQL and generate a weekly report automatically.</p>
-    </div>
-  </section>
+  </div>
 
-  <section>
-    <h2 class="section-title">Testimonials</h2>
-    <div class="testimonial">
-      <h3>"Impressive Results!"</h3>
-      <p>Ram is fantastic with data! His dashboards helped us increase ROI by 40%. Highly recommended. — Dummy Client, XYZ Pvt. Ltd.</p>
-    </div>
-  </section>
+  <main class="app-shell container" style="padding: 26px 0 40px; display:grid; grid-template-columns: 280px 1fr; gap:22px; min-height: calc(100vh - 100px);">
+    <aside class="detail-card" style="padding:20px; height: fit-content; position: sticky; top: 100px;">
+      <div class="eyebrow">Dashboard Navigation</div>
+      <h2 style="margin:0 0 16px; font-size:1.5rem; letter-spacing:-0.04em;">Bookmarks</h2>
+      <p class="muted" style="margin:0 0 18px; line-height:1.8;">Click any bookmark to switch the dashboard view just like Power BI bookmarks.</p>
 
-  <section>
-    <h2 class="section-title">Blog</h2>
-    <div class="blog-post">
-      <h3>How I Combine Ads + Analytics to Save Clients’ Budget</h3>
-      <p>Learn how I helped a client reduce ad spend waste and increase conversions using Python automation and Power BI visuals.</p>
-    </div>
-    <div class="blog-post">
-      <h3>Top 5 Power BI Tips for Marketers</h3>
-      <p>Discover ways to make your ad reporting dashboards more actionable, visual, and client-friendly.</p>
-    </div>
-  </section>
+      <div class="bookmark-list" style="display:grid; gap:10px;">
+        <button class="chip-btn active bookmark-btn" data-view="overview" onclick="showView('overview')">Overview Dashboard</button>
+        <button class="chip-btn bookmark-btn" data-view="about" onclick="showView('about')">Profile Summary</button>
+        <button class="chip-btn bookmark-btn" data-view="experience" onclick="showView('experience')">Experience</button>
+        <button class="chip-btn bookmark-btn" data-view="projects" onclick="showView('projects')">Projects</button>
+        <button class="chip-btn bookmark-btn" data-view="deepdive" onclick="showView('deepdive')">Drill Down</button>
+        <button class="chip-btn bookmark-btn" data-view="contact" onclick="showView('contact')">Contact</button>
+      </div>
 
-  <section class="contact">
-    <h2>Contact Me</h2>
-    <p>Email: <a href="mailto:ramtyagi00@gmail.com">ramtyagi00@gmail.com</a></p>
-    <p>Phone: <a href="tel:+919354292734">+91 93542 92734</a></p>
-    <p>GitHub: <a href="https://github.com/ramtyagi" target="_blank">https://github.com/RamTyagi1208</a></p>
-  </section>
+      <div class="mini-panel" style="margin-top:18px;">
+        <small>Portfolio Mode</small>
+        <strong style="display:block; margin-bottom:6px;">Dashboard Presentation</strong>
+        <span class="muted">This layout now works like a report view where one bookmark opens one section at a time.</span>
+      </div>
+    </aside>
+
+    <section class="dashboard-stage" style="display:grid; gap:22px;">
+      <div id="view-overview" class="dashboard-view">
+        <section class="hero" style="min-height:auto; padding:0;">
+          <div class="hero-layout" style="grid-template-columns: 1.02fr 0.98fr;">
+            <section class="hero-copy detail-card" style="padding:28px;">
+              <div class="eyebrow">Overview Dashboard</div>
+              <h1 class="headline" style="font-size: clamp(2.4rem, 1.6rem + 2.6vw, 4.8rem); margin-bottom:16px;">
+                <span class="gradient-text">Analytics portfolio</span><br>
+                presented like a<br>
+                business dashboard.
+              </h1>
+              <p>
+                This main page is now designed like a report landing screen. Users can click bookmarks on the left to switch between Profile, Experience, Projects, Drill Down, and Contact views — similar to Power BI bookmark navigation.
+              </p>
+              <div class="hero-actions">
+                <button class="btn btn-primary" onclick="showView('experience')">Go to Experience</button>
+                <button class="btn btn-secondary" onclick="showView('contact')">Open Contact</button>
+              </div>
+              <div class="impact-row">
+                <div class="metric-card"><strong>4 Years</strong><span>Analytics and BI experience</span></div>
+                <div class="metric-card"><strong>90%</strong><span>Manual reporting reduction</span></div>
+                <div class="metric-card"><strong>15+ Countries</strong><span>Global leadership reporting</span></div>
+                <div class="metric-card"><strong>4–5 Sec</strong><span>Optimized dashboard speed</span></div>
+              </div>
+            </section>
+
+            <section class="dashboard-shell">
+              <div class="dashboard-head">
+                <h3>Executive Summary</h3>
+                <span class="status-pill">Bookmark Enabled</span>
+              </div>
+              <div class="dashboard-grid">
+                <div class="chart-card">
+                  <small>Domain Coverage</small>
+                  <div class="bars">
+                    <div class="bar" data-label="Sales" style="height: 64%;"></div>
+                    <div class="bar" data-label="Fin" style="height: 82%;"></div>
+                    <div class="bar" data-label="Inv" style="height: 70%;"></div>
+                    <div class="bar" data-label="Ops" style="height: 90%;"></div>
+                    <div class="bar" data-label="AR" style="height: 76%;"></div>
+                  </div>
+                </div>
+                <div class="kpi-grid">
+                  <div class="mini-panel"><small>Power BI</small><strong>Advanced</strong><div class="progress"><span style="width:95%"></span></div></div>
+                  <div class="mini-panel"><small>SQL</small><strong>Optimized</strong><div class="progress"><span style="width:92%"></span></div></div>
+                  <div class="mini-panel"><small>DAX</small><strong>Strong KPI Logic</strong><div class="progress"><span style="width:94%"></span></div></div>
+                </div>
+              </div>
+              <div class="dashboard-footer">
+                <div class="mini-panel"><small>Primary Role</small><strong>BI Developer</strong><span class="muted">Dashboarding and reporting</span></div>
+                <div class="mini-panel"><small>Reporting</small><strong>Leadership Ready</strong><span class="muted">Executive-facing insights</span></div>
+                <div class="mini-panel"><small>Workflow</small><strong>Automation</strong><span class="muted">Excel to Power BI modernization</span></div>
+              </div>
+            </section>
+          </div>
+        </section>
+      </div>
+
+      <div id="view-about" class="dashboard-view hidden">
+        <section class="detail-card">
+          <div class="eyebrow">Profile Summary</div>
+          <h2 class="section-title">Professional analytics profile</h2>
+          <p>
+            Data Analytics and Power BI Developer with nearly 4 years of experience delivering automated, high-performance BI solutions for sales, finance, inventory, operations, and leadership teams. Strong expertise in Power BI, SQL, DAX, Power Query, data modeling, Excel automation, and enterprise reporting.
+          </p>
+          <div class="skill-cloud">
+            <span class="skill-pill">Power BI</span>
+            <span class="skill-pill">SQL</span>
+            <span class="skill-pill">DAX</span>
+            <span class="skill-pill">Power Query</span>
+            <span class="skill-pill">Data Modeling</span>
+            <span class="skill-pill">RLS</span>
+            <span class="skill-pill">Power BI Service</span>
+            <span class="skill-pill">Excel Automation</span>
+          </div>
+          <div class="skill-bars">
+            <div class="skill-row"><strong><span>Power BI / DAX / Modeling</span><span>95%</span></strong><div class="progress"><span style="width:95%"></span></div></div>
+            <div class="skill-row"><strong><span>SQL / Optimization</span><span>92%</span></strong><div class="progress"><span style="width:92%"></span></div></div>
+            <div class="skill-row"><strong><span>ETL / Integration</span><span>86%</span></strong><div class="progress"><span style="width:86%"></span></div></div>
+          </div>
+        </section>
+      </div>
+
+      <div id="view-experience" class="dashboard-view hidden">
+        <section>
+          <div class="eyebrow">Experience</div>
+          <h2 class="section-title">Work experience dashboard</h2>
+          <p class="section-subtitle">This bookmark opens only your experience view, like switching report pages in a BI dashboard.</p>
+          <div class="timeline-wrap">
+            <article class="timeline-card">
+              <div class="meta">
+                <span class="tag">Apr 2023 – Present</span>
+                <span class="tag">Maxima Apparel DBA Prime Garments Pvt Ltd</span>
+              </div>
+              <h3 style="margin:0 0 10px; font-size:1.45rem;">Data Analytics / BI Developer</h3>
+              <p>Designed and delivered end-to-end Power BI dashboards for Sales, Finance, Inventory, AR, and Operations leadership across 15+ countries.</p>
+              <ul>
+                <li>Automated Daily Management Reports and reduced Excel effort by 90%</li>
+                <li>Built YTD, MTD, LY, YoY, and running total measures</li>
+                <li>Implemented RLS and managed refresh schedules in Power BI Service</li>
+                <li>Improved report speed using SQL and DAX optimization</li>
+              </ul>
+              <div class="foot"><span>Enterprise reporting</span><span>Performance focused</span></div>
+            </article>
+
+            <article class="timeline-card">
+              <div class="meta">
+                <span class="tag">Aug 2021 – Nov 2022</span>
+                <span class="tag">Think & Learn Pvt Ltd</span>
+              </div>
+              <h3 style="margin:0 0 10px; font-size:1.45rem;">Business Analyst</h3>
+              <p>Developed interactive Power BI dashboards for leadership and business teams using SQL, Power Query, and well-structured data models.</p>
+              <ul>
+                <li>Created dashboards with slicers and drill-through views</li>
+                <li>Worked on data extraction and transformation from multiple systems</li>
+                <li>Collaborated with stakeholders to improve reporting quality</li>
+              </ul>
+              <div class="foot"><span>Interactive analytics</span><span>Business collaboration</span></div>
+            </article>
+          </div>
+        </section>
+      </div>
+
+      <div id="view-projects" class="dashboard-view hidden">
+        <section>
+          <div class="eyebrow">Projects</div>
+          <h2 class="section-title">Project dashboard</h2>
+          <p class="section-subtitle">This view focuses only on project cards. Filters still work like dashboard slicers.</p>
+          <div class="filter-row">
+            <button class="chip-btn active" data-filter="all">All</button>
+            <button class="chip-btn" data-filter="automation">Automation</button>
+            <button class="chip-btn" data-filter="finance">Finance</button>
+            <button class="chip-btn" data-filter="operations">Operations</button>
+          </div>
+          <div class="projects-grid">
+            <article class="project-card" data-category="automation operations">
+              <div class="meta"><span class="tag">Power BI</span><span class="tag">SQL</span><span class="tag">DAX</span></div>
+              <small class="muted">Daily Management Report Automation</small>
+              <h3 style="margin:8px 0 10px; font-size:1.35rem;">Automated executive dashboard for daily business monitoring</h3>
+              <p>Integrated SQL and ERP data into Power BI to automate sales, inventory, orders, and financial KPI reporting.</p>
+              <ul>
+                <li>Reduced preparation time from 4–5 hours to near real-time</li>
+                <li>Improved report performance from 25 seconds to 4–5 seconds</li>
+                <li>Enabled faster leadership decision-making</li>
+              </ul>
+              <div class="foot"><span>Automation + Speed</span><span>High impact</span></div>
+            </article>
+
+            <article class="project-card" data-category="finance">
+              <div class="meta"><span class="tag">Finance Analytics</span><span class="tag">ERP</span><span class="tag">Power BI</span></div>
+              <small class="muted">Royalty Reporting Dashboard</small>
+              <h3 style="margin:8px 0 10px; font-size:1.35rem;">Finance dashboard for royalty accrual and validation</h3>
+              <p>Built a Power BI solution for monthly royalty accrual, MRU/GMR validation, and multi-country licensor reporting.</p>
+              <ul>
+                <li>Replaced manual Excel workflows with auditable BI reporting</li>
+                <li>Improved reporting accuracy and turnaround time</li>
+                <li>Integrated ERP, PLM, and invoicing data into one model</li>
+              </ul>
+              <div class="foot"><span>Finance BI</span><span>Governance + Accuracy</span></div>
+            </article>
+          </div>
+        </section>
+      </div>
+
+      <div id="view-deepdive" class="dashboard-view hidden">
+        <section>
+          <div class="eyebrow">Drill Down</div>
+          <h2 class="section-title">Detailed insights view</h2>
+          <p class="section-subtitle">Open each panel to get more details, similar to expanding sections inside a report.</p>
+          <div class="accordion-list">
+            <div class="accordion-item open">
+              <button class="accordion-head">
+                <div class="accordion-left"><small>Core Capability</small><h3>Power BI Delivery Lifecycle</h3></div>
+                <span class="accordion-icon">+</span>
+              </button>
+              <div class="accordion-body" style="max-height:240px;"><div class="accordion-inner">Requirement gathering, KPI definition, data modeling, DAX development, report design, security setup, publishing, refresh management, and user access governance.</div></div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-head">
+                <div class="accordion-left"><small>Performance Focus</small><h3>SQL and DAX Optimization</h3></div>
+                <span class="accordion-icon">+</span>
+              </button>
+              <div class="accordion-body"><div class="accordion-inner">Improve speed with SQL-level aggregation, efficient joins, better models, optimized DAX measures, and layout decisions that reduce rendering pressure.</div></div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-head">
+                <div class="accordion-left"><small>Business Value</small><h3>How dashboards helped stakeholders</h3></div>
+                <span class="accordion-icon">+</span>
+              </button>
+              <div class="accordion-body"><div class="accordion-inner">Delivered faster decision-making, reduced dependency on Excel, improved KPI visibility, and created more reliable leadership reporting.</div></div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div id="view-contact" class="dashboard-view hidden">
+        <section class="contact-wrap">
+          <div class="contact-grid">
+            <div>
+              <div class="eyebrow">Contact</div>
+              <h2 class="section-title" style="margin-bottom:12px;">Contact dashboard</h2>
+              <p class="section-subtitle" style="margin-bottom:0; max-width:620px;">When the Contact bookmark is clicked, this page becomes the focus — just like a bookmark action in a Power BI report.</p>
+              <div class="contact-list">
+                <a class="contact-item" href="mailto:ram.tyagi1208@gmail.com"><span class="icon">✉</span><span>ram.tyagi1208@gmail.com</span></a>
+                <a class="contact-item" href="tel:+919027824785"><span class="icon">☎</span><span>+91 90278 24785</span></a>
+                <a class="contact-item" href="tel:+919354292734"><span class="icon">☎</span><span>+91 93542 92734</span></a>
+                <a class="contact-item" href="#"><span class="icon">in</span><span>Add your real LinkedIn and Naukri URLs here</span></a>
+              </div>
+            </div>
+            <div class="contact-card">
+              <div class="eyebrow">Dashboard Style</div>
+              <h3 style="margin:0 0 12px; font-size:1.45rem;">Bookmark-based presentation</h3>
+              <p>
+                Now your portfolio behaves more like a report dashboard. Left-side bookmarks switch the visible page, project filters act like slicers, and drill-down panels provide more details only when needed.
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <div class="divider"></div>
+  <footer>
+    © 2026 Ramkumar Tyagi • Data Analytics | Power BI Developer • Dashboard-style portfolio.
+  </footer>
+
+  <script>
+    function showView(viewName) {
+      const views = document.querySelectorAll('.dashboard-view');
+      const buttons = document.querySelectorAll('.bookmark-btn');
+      views.forEach(view => view.classList.add('hidden'));
+      const activeView = document.getElementById('view-' + viewName);
+      if (activeView) activeView.classList.remove('hidden');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      const activeBtn = document.querySelector('.bookmark-btn[data-view="' + viewName + '"]');
+      if (activeBtn) activeBtn.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    const filterButtons = document.querySelectorAll('.chip-btn[data-filter]');
+    const projectCards = document.querySelectorAll('.project-card');
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        const filter = button.dataset.filter;
+        projectCards.forEach(card => {
+          const categories = card.dataset.category || '';
+          const shouldShow = filter === 'all' || categories.includes(filter);
+          card.classList.toggle('hidden', !shouldShow);
+        });
+      });
+    });
+
+    const accordionItems = document.querySelectorAll('.accordion-item');
+    accordionItems.forEach(item => {
+      const head = item.querySelector('.accordion-head');
+      const body = item.querySelector('.accordion-body');
+      head.addEventListener('click', () => {
+        const open = item.classList.contains('open');
+        accordionItems.forEach(other => {
+          other.classList.remove('open');
+          other.querySelector('.accordion-body').style.maxHeight = null;
+        });
+        if (!open) {
+          item.classList.add('open');
+          body.style.maxHeight = body.scrollHeight + 'px';
+        }
+      });
+    });
+  </script>
 </body>
 </html>
